@@ -1,4 +1,7 @@
 {
+  "dependencies" : {     
+    "bitly" : "1.2.4"
+  },
   "devDependencies": {
     "sinon" : "1.7.3",
     "mocha" : "1.16.2",

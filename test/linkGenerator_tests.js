@@ -17,7 +17,7 @@ describe("linkGenerator", function(){
       expect(result).to.eq("http://www.yahoo.com/test?utm_campaign=funCampaign");
     })
     it("it shortens the url", function(){
-
+      
     });
     it("it stores the shortened url", function(){
 
