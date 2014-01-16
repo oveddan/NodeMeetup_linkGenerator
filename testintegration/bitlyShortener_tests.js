@@ -9,9 +9,9 @@ describe("bitlyShortener", function(){
 
       bitlyShortener.shortenUrl(toShorten, function(err, result){
         expect(result).to.be.a('string');
-
         done();
-      });      
+      });    
     });
   })
 });
+

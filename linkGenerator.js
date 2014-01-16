@@ -1,10 +1,12 @@
 var campaignRepository = require("./campaignRepository");
 
 var linkGenerator = {
-  generate : function(url, campaignId){
+  generate : function(url, campaignId, cb){
     var campaignName = campaignRepository[campaignId];
 
-    return url + "?utm_campaign=" + campaignName;
+    var result = url + "?utm_campaign=" + campaignName;
+
+    cb(null, result);
   }
 };
 
