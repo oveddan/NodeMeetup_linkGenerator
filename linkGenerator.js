@@ -1,12 +1,12 @@
-var campaignRepository = require("./campaignRepository"),
+var campaignsHash = require("./campaignsHash"),
   bitlyShortener = require('./bitlyShortener');
 
 var linkGenerator = {
   generate : function(url, campaignId, cb){
-    if(!(campaignRepository.hasOwnProperty(campaignId))){
+    if(!(campaignsHash.hasOwnProperty(campaignId))){
       cb("Invalid campaign id");
     } else {  
-      var campaignName = campaignRepository[campaignId];
+      var campaignName = campaignsHash[campaignId];
 
       var trackingUrl = url + "?utm_campaign=" + campaignName;
 
