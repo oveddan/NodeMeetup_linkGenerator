@@ -1,12 +1,19 @@
-var campaignRepository = require("./campaignRepository");
+var campaignRepository = require("./campaignRepository"),
+  bitlyShortener = require('./bitlyShortener');
 
 var linkGenerator = {
   generate : function(url, campaignId, cb){
-    var campaignName = campaignRepository[campaignId];
+    if(!(campaignRepository.hasOwnProperty(campaignId))){
+      cb("Invalid campaign id");
+    } else {  
+      var campaignName = campaignRepository[campaignId];
 
-    var result = url + "?utm_campaign=" + campaignName;
+      var trackingUrl = url + "?utm_campaign=" + campaignName;
 
-    cb(null, result);
+      bitlyShortener.shortenUrl(trackingUrl, function(err, shortenedUrl){
+        cb(null, shortenedUrl);
+      });
+    }
   }
 };
 
