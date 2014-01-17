@@ -2,7 +2,7 @@ var campaignsHash = require("./campaignsHash"),
   bitlyShortener = require('./bitlyShortener');
 
 var linkGenerator = {
-  generate : function(url, campaignId, cb){
+  generate : function(url, campaignId, emitter, cb){
     if(!(campaignsHash.hasOwnProperty(campaignId))){
       cb("Invalid campaign id");
     } else {  
@@ -11,7 +11,12 @@ var linkGenerator = {
       var trackingUrl = url + "?utm_campaign=" + campaignName;
 
       bitlyShortener.shortenUrl(trackingUrl, function(err, shortenedUrl){
-        cb(null, shortenedUrl);
+        if(err)
+          cb(err);
+        else {
+          emitter.emit('linkGenerated', {resultUrl : shortenedUrl});
+          cb(null, shortenedUrl); 
+        }
       });
     }
   }
