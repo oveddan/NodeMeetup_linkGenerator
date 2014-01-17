@@ -1,5 +1,5 @@
 var Bitly = require('bitly');
-var bitly = new Bitly('o_tekb5q7qk', 'R_188ad068d61bfd991992dd281d064378');
+var bitly = new Bitly('nodejsdemo', 'R_4f0e856576154ebfe17675ee0260ddbb');
 
 var bitlyShortener = {
   shortenUrl : function(url, cb){
